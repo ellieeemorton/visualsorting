@@ -6,25 +6,25 @@ void setup (){
 }
 
 void draw (){
-  largest = -1;
-   int[] sort = new int [cheesesticks.length];
-//  while(true){ 
-   for(int j=1; j< cheesesticks.length-1; j++){
-     if (cheesesticks[j] > largest){
-       largest = cheesesticks[j];
-       sort[cheesesticks.length-j]=largest;
-     }
-   }
-   
-   
-   
+  largest = 0;
+   for(int i=0; i< cheesesticks.length; i++){
+      for(int j=i; j<cheesesticks.length-1; j++){
+        if(cheesesticks[j]>cheesesticks[largest]){
+          largest=j;
+        }
+      }
+    } 
     
-   for (int i=0; i < cheesesticks.length; i++){
-      rect(0, (i*30) + 10, sort[i] * 2, 20);
+      int temp=cheesesticks[i];
+     cheesesticks[i]=cheesesticks[j];
+     cheesesticks[j]=temp;
+    
+   for (int k=0; k < cheesesticks.length; k++){
+      rect(0, (k*30) + 10, cheesesticks[k] * 2, 20);
    }
-   
-   for (int k = 0; k < sort.length; k++) {
-     println(sort[k], "\n");
+   println("beginning of one array");
+   for (int m=0; m<cheesesticks.length; m++){
+   println(cheesesticks[m]);
    }
-}
+   }
 
